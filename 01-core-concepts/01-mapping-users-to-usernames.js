@@ -4,6 +4,8 @@
  * 3. Sort users by age descending
  */
 
+import { pipe } from '../00-utils/01-pipe.js';
+
 const users = [
   {
     id: 1,
@@ -34,6 +36,4 @@ const sortUsersByAge = (users, order = 'asc') =>
     order === 'asc' ? userA.age - userB.age : userB.age - userA.age
   );
 
-console.log(getUserName(users));
-console.log(getActiveUsers(users));
-console.log(sortUsersByAge(users, 'desc'));
+console.log(pipe(getActiveUsers, sortUsersByAge, getUserName)(users));
